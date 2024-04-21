@@ -1,0 +1,12 @@
+<label class="nombre">Ingresar Nombre</label>
+<input type="text" [(ngModel)]="nombre">
+<label class="clave">Ingresar Clave</label>
+<input type="text" [(ngModel)]="clave">
+<button class="button" (click)="Ingresar(nombre,clave)">Ingresar</button>
+<div *ngIf="botonApretado">
+@if (datoValido) {
+    <app-bienvenido></app-bienvenido>
+} @else {
+    <app-error></app-error>
+}
+</div>

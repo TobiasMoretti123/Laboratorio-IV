@@ -1,0 +1,14 @@
+<div class="Aplicacion">
+  <label class="edad1">Ingresar La Primera Edad</label>
+  <input type="number" [(ngModel)]="edad1">
+  <label class="edad2">Ingresar La Segunda Edad</label>
+  <input type="number" [(ngModel)]="edad2">
+  <button class="button" (click)="RealizarOperacion(edad1,edad2)">Operar</button>
+  <button class="button" (click)="Limpiar()">Limpiar</button>
+  <div class="Resultados">
+  <p class="text">Suma:</p>
+  <input type="number"[(ngModel)]="suma">
+  <p class="text">Promedio:</p>
+  <input type="number" [(ngModel)]="promedio" >
+  </div> 
+</div>

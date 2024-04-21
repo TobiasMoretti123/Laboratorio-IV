@@ -1,0 +1,16 @@
+<h1 class="titleStyle"> {{title}} </h1> 
+
+<button (click)="sumar()" >Sumar</button>
+
+<p>{{suma}}</p>
+
+@if(suma == 1)
+{
+  <p>{{nombre}}</p>
+}
+
+<ng-container  *ngFor="let item of miArray">
+  <p *ngIf="suma == 1">{{mostrar()}}</p>
+</ng-container>
+
+<input type="text" [(ngModel)]="nombre">
