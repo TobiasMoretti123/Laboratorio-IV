@@ -1,5 +1,18 @@
-<label class="nombre">Ingresar mail</label>
-<input type="text" [(ngModel)]="mail">
-<label class="clave">Ingresar Clave</label>
-<input type="text" [(ngModel)]="clave">
-<button (click)="CrearCuenta(mail,clave)">Ingresar</button>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center text-primary">Ingresar usuario</h1>
+            <input [(ngModel)]="nuevoMail" class="form-control my-2">
+            <input [(ngModel)]="nuevaClave" class="form-control my-2">
+            <div class="d-grid gap-2">
+                <button (click)="Registrarse()" class="btn btn-primary">Registrarse</button>
+            </div>
+            @if (usuarioLogeado != ""){
+                <h2 class="text-center text-primary">Usuario registrado: {{usuarioLogeado}}</h2>
+            }
+            @if(errorDeDatos){
+                <p class="text-center text-primary">{{mensaje}}</p>
+            }
+        </div>
+    </div>
+</div>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Usuario } from '../../Clases/usuario';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from '../home/home.component';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,38 +13,35 @@ import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/rou
   styleUrl: './sign-up.component.css'
 })
 export class SignUpComponent {
-  mail:string = '';
-  clave:string = '';
-  nuevoUsuario: Usuario = new Usuario(this.mail,this.clave);
-  usuarios = [{
-    usuario: new Usuario('tobiasmoretti14@gmail.com','asdfghjkl')
-  },{
-    usuario: new Usuario('armando78@gmail.com','qwertyuiop')
-  },{
-    usuario: new Usuario('wenceslao90@gmail.com','zxcvbnm')
-  }];
+  nuevoMail: string = '';
+  nuevaClave: string = '';
+  router = new Router();
+  usuarioLogeado: string = '';
+  errorDeDatos: boolean = false;
+  mensaje: string = "";
 
-  constructor(private router:Router){}
+  constructor(public auth: Auth){}
 
-  CrearCuenta(mail:string,clave:string){
-    if(mail != '' && clave != '')
-    {
-      this.nuevoUsuario.clave = clave;
-      this.nuevoUsuario.mail = mail;
-      for (let i = 0; i < this.usuarios.length; i++) {
-        if(this.usuarios[i].usuario.mail != this.nuevoUsuario.mail && this.usuarios[i].usuario.mail != this.nuevoUsuario.clave){
-          this.router.navigate(['home']);
+  Registrarse(){
+    createUserWithEmailAndPassword(this.auth,this.nuevoMail,this.nuevaClave).then((res) =>{
+      if(res.user.email !== null) this.usuarioLogeado = res.user.email;
+      this.errorDeDatos = false;
+      this.mensaje = "Usuario Logeado";
+      this.router.navigate(['home']);
+    }).catch((e)=>{
+      this.errorDeDatos = true;
+
+      switch (e.code){
+        case "auth/invalid-email":
+          this.mensaje = "Email invalido";
           break;
-        }else{
-          this.router.navigate(['error']);
-        }  
+        case "auth/email-already-in-use":
+          this.mensaje = "Email ya en uso";
+          break;
+        default:
+          this.mensaje = e.code
+          break;
       }
-    }else{
-      this.router.navigate(['error']);
-    }
-  }
-  Guardar(){
-    const usuariosString = JSON.stringify(this.usuarios);
-    localStorage.setItem('usuariosString', usuariosString);
+    });
   }
 }

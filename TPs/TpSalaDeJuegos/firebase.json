@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "public",
+    "site": "tpsaladejuegos-2c37d",
+    "public": "dist/tp-sala-de-juegos",
     "ignore": [
       "firebase.json",
       "**/.*",

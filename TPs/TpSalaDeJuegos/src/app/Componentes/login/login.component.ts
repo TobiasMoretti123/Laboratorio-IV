@@ -1,46 +1,36 @@
-import { Component, OnInit, input } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
-import { Usuario } from '../../Clases/usuario';
-import { ErrorComponent } from '../error/error.component';
-import { HomeComponent } from '../home/home.component';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ErrorComponent,FormsModule,RouterLink,RouterLinkActive,RouterModule,HomeComponent],
+  imports: [FormsModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent{
-  mail:string = '';
-  clave:string = '';
-  nuevoUsuario: Usuario = new Usuario(this.mail,this.clave);
-  usuarioExistente = false;
-  usuarios = [{
-    usuario: new Usuario('tobiasmoretti14@gmail.com','asdfghjkl')
-  },{
-    usuario: new Usuario('armando78@gmail.com','qwertyuiop')
-  },{
-    usuario: new Usuario('wenceslao90@gmail.com','zxcvbnm')
-  }];
+  public coleccionLogin:any[] = [];
+  public usuario:string = "";
+  public conteoLogin:number = 0;
+  private subcripciones!:Subscription;
 
-  constructor(private router:Router){}
-  
-  Ingresar(mail:string,clave:string){
-    if(mail != '' && clave != ''){
-      for (let i = 0; i < this.usuarios.length; i++) {
-        if(mail === this.usuarios[i].usuario.mail && clave === this.usuarios[i].usuario.clave){
-          this.router.navigate(['home']);
-          break; 
-        } 
-        else 
-        { 
-          this.router.navigate(['error']);
-        } 
-      }
-    }else{
-      this.router.navigate(['error']);
-    } 
+  constructor(private firestore: Firestore){}
+
+  Login(){
+    let coleccion = collection(this.firestore, 'logins');
+    addDoc(coleccion, {fecha: new Date(), "usuario":this.usuario})
+  }
+
+  GetData(){
+    let coleccion = collection(this.firestore, 'logins');
+    const observable = collectionData(coleccion);
+    this.subcripciones = observable.subscribe((respuesta:any) => {
+      this.coleccionLogin = respuesta;
+      this.conteoLogin = this.coleccionLogin.length;
+      console.log(respuesta);
+    })
   }
 }
