@@ -1,0 +1,24 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+.border {
+    border: 4px solid #615305;
+    border-radius: 10px; 
+}
+  
+.boton {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.texto{
+    margin-left: 85px;
+}
+
+.inputClave{
+    margin-left: 10px;
+}

@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$TpSalaDeJuegos-primary: mat.define-palette(mat.$indigo-palette);
+$TpSalaDeJuegos-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$TpSalaDeJuegos-warn: mat.define-palette(mat.$red-palette);
+
+$TpSalaDeJuegos-theme: mat.define-light-theme((
+  color: (
+    primary: $TpSalaDeJuegos-primary,
+    accent: $TpSalaDeJuegos-accent,
+    warn: $TpSalaDeJuegos-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+@include mat.all-component-themes($TpSalaDeJuegos-theme);
+

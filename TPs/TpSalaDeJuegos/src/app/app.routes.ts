@@ -1,18 +1,35 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './Componentes/login/login.component';
-import { HomeComponent } from './Componentes/home/home.component';
-import { QuienSoyComponent } from './Componentes/quien-soy/quien-soy.component';
-import { SignUpComponent } from './Componentes/sign-up/sign-up.component';
-import { VerificacionLoginComponent } from './Componentes/verificacion-login/verificacion-login.component';
-
-
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: "full" },
-    { path: 'firestore', component: LoginComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'login', component: VerificacionLoginComponent},
-    { path: 'signUp', component: SignUpComponent},
-    { path: 'quien-soy', component: QuienSoyComponent},
-    { path: '**', component: LoginComponent },
+    {
+        path: '',
+        loadComponent: () => import('./Componentes/home/home.component')
+            .then((m) => m.HomeComponent)
+    },
+    {
+        path: 'home',
+        loadComponent: () => import('./Componentes/home/home.component')
+            .then((m) => m.HomeComponent)
+    },
+    {
+        path: 'login',
+        loadComponent: () => import('./Componentes/login-verificacion/login-verificacion.component')
+            .then((m) => m.LoginVerificacionComponent)
+    },
+    {
+        path: 'quien-soy',
+        loadComponent: () => import('./Componentes/quien-soy/quien-soy.component')
+            .then((m) => m.QuienSoyComponent)
+    },
+    {
+        path: 'registrarse',
+        loadComponent: () => import('./Componentes/registrarse-verificacion/registrarse-verificacion.component')
+            .then((m) => m.RegistrarseVerificacionComponent)
+    },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    {
+        path: '**',
+        loadComponent: () => import('./Componentes/error/error.component')
+            .then((m) => m.ErrorComponent)
+    }
 ];

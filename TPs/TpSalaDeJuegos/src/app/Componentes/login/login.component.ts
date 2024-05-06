@@ -1,35 +1,37 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Usuario } from '../../Clases/Usuario';
+import { Subscription } from 'rxjs';
+import { addDoc,Firestore, collection, collectionData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent{
-  public coleccionLogin:any[] = [];
-  public usuario:string = "";
-  public conteoLogin:number = 0;
-  private subcripciones!:Subscription;
+export class LoginComponent {
+  coleccionLogin:any[] =[];
+  usuario: Usuario = new Usuario("","");
+  contadorLog:number = 0;
+  private sub!:Subscription;
 
-  constructor(private firestore: Firestore){}
+  constructor(private firestore:Firestore){}
 
   Login(){
-    let coleccion = collection(this.firestore, 'logins');
-    addDoc(coleccion, {fecha: new Date(), "usuario":this.usuario})
+    let col = collection(this.firestore,'logins');
+    addDoc(col,{ fecha:new Date(), "user":this.usuario})
   }
 
   GetData(){
-    let coleccion = collection(this.firestore, 'logins');
-    const observable = collectionData(coleccion);
-    this.subcripciones = observable.subscribe((respuesta:any) => {
+    let col = collection(this.firestore,'logins');
+    const observable = collectionData(col);
+
+    this.sub = observable.subscribe((respuesta:any)=>{
       this.coleccionLogin = respuesta;
-      this.conteoLogin = this.coleccionLogin.length;
+      this.contadorLog = this.coleccionLogin.length;
       console.log(respuesta);
     })
   }

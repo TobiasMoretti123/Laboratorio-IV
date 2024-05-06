@@ -1,0 +1,18 @@
+<div class="contenedor">
+    <div class="row justify-content-center">
+      <div class="col-md-6 border p-4">
+        <h1 class="texto">Ingresar usuario</h1>
+        <mat-form-field class="inputCorreo">
+          <input matInput [(ngModel)]="usuarioMail" placeholder="Correo electrónico">
+        </mat-form-field>
+        <mat-form-field class="inputClave">
+          <input matInput [(ngModel)]="usuarioClave" type="password" placeholder="Contraseña">
+        </mat-form-field>
+        <div class="botones">
+          <button mat-raised-button color="primary" class="boton" (click)="Login()">Login</button>
+          <button mat-raised-button color="primary" class="boton" (click)="IngresoRapido()">Auto Completar</button>   
+        </div>
+      </div>
+    </div>
+  </div>
+  
