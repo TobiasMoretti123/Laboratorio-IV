@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
   }
   
 .border {
@@ -16,7 +16,7 @@
 }
 
 .texto{
-    margin-left: 85px;
+    margin-left: 135px;
 }
 
 .inputClave{

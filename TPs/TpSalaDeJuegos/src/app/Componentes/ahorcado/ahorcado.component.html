@@ -1,0 +1,44 @@
+<div class="ahorcado-container">
+    <div class="munieco">
+        <span class="horca">
+            <img src ="../../../assets/horca.png">
+        </span>
+        <span class="cabeza">
+            <div *ngIf="cabeza">
+                <img src ="../../../assets/cabeza.png"> 
+            </div>
+        </span>
+        <span class="torzo">
+            <div *ngIf="torzo">
+                <img src ="../../../assets/torzo.png"> 
+            </div>
+        </span>
+        <span class="brazos">
+            <div *ngIf="brazos">
+                <img src ="../../../assets/brazos.png"> 
+            </div>
+        </span>
+        <span class="piernas">
+            <div *ngIf="piernas">
+                <img src ="../../../assets/piernas.png"> 
+            </div>
+        </span>
+    </div>
+
+    <div class="palabra-oculta">
+      <span *ngFor="let letra of palabraSeleccionadaPorLetra">
+        {{ letrasCorrectas.includes(letra) ? letra : '_' }}
+      </span>
+    </div>
+
+    <div class="botones">
+      <button mat-raised-button color="accent" *ngFor="let letra of botones" (click)="IngresarLetra(letra)" 
+      [disabled]="letrasCorrectas.includes(letra) || letrasIncorrectas.includes(letra) || letrasIncorrectas.length == 4 || esVictoria">
+        {{ letra }}
+      </button>
+    </div>
+      <button mat-raised-button color="primary" (click)="Volver()">Volver</button>
+</div>
+
+    
+  

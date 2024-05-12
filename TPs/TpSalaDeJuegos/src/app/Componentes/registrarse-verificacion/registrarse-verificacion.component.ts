@@ -30,7 +30,7 @@ export class RegistrarseVerificacionComponent {
         this.usuarioLogeado = new Usuario (respuesta.user.email,this.nuevoUsuarioClave);
         this.banderaError = false;
         this.AbrirSnackBar("Bienvenido Nuevo Usuario: "+ this.usuarioLogeado.mail);
-        this.router.navigate(['home']);
+        this.RuteoHome();
       }  
     }).catch((e)=>{
       this.banderaError = true;
@@ -45,6 +45,9 @@ export class RegistrarseVerificacionComponent {
         case "auth/missing-password":
           this.AbrirSnackBar("Contraseña Vacia");
           break;
+        case "auth/weak-password":
+          this.AbrirSnackBar("La contraseña es muy corta");
+          break;
         default:
           this.AbrirSnackBar(e.code);
           break;
@@ -53,6 +56,16 @@ export class RegistrarseVerificacionComponent {
   }
 
   AbrirSnackBar(mensaje:any){
-    this.snackBar.open(mensaje, 'Cerrar');
+    this.snackBar.open(mensaje, 'Cerrar',{
+      duration: 2000,
+    });
+  }
+  
+  RuteoHome(){
+    this.router.navigate(['/home']);
+  }
+
+  Volver(){
+    this.RuteoHome();
   }
 }

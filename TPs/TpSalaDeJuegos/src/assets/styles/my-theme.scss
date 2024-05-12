@@ -2,9 +2,104 @@
 
 @include mat.core();
 
-$TpSalaDeJuegos-primary: mat.define-palette(mat.$indigo-palette);
-$TpSalaDeJuegos-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$TpSalaDeJuegos-warn: mat.define-palette(mat.$red-palette);
+$TpSalaDeJuegos-primary: mat.define-palette((
+  50 : #faf7f1,
+  100 : #f3ebdb,
+  200 : #ebddc3,
+  300 : #e2cfab,
+  400 : #dcc599,
+  500 : #d6bb87,
+  600 : #d1b57f,
+  700 : #ccac74,
+  800 : #c6a46a,
+  900 : #bc9657,
+  A100 : #ffffff,
+  A200 : #fff8ee,
+  A400 : #ffe5bb,
+  A700 : #ffdba1,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+));
+
+$TpSalaDeJuegos-accent: mat.define-palette((
+  50 : #f9faf1,
+    100 : #eff3db,
+    200 : #e5ebc3,
+    300 : #dae2ab,
+    400 : #d2dc99,
+    500 : #cad687,
+    600 : #c5d17f,
+    700 : #bdcc74,
+    800 : #b7c66a,
+    900 : #abbc57,
+    A100 : #ffffff,
+    A200 : #fcffee,
+    A400 : #f3ffbb,
+    A700 : #efffa1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+  )
+));
+
+$TpSalaDeJuegos-warn: mat.define-palette((
+  50 : #faf2f1,
+    100 : #f3dfdb,
+    200 : #ebcac3,
+    300 : #e2b4ab,
+    400 : #dca499,
+    500 : #d69487,
+    600 : #d18c7f,
+    700 : #cc8174,
+    800 : #c6776a,
+    900 : #bc6557,
+    A100 : #ffffff,
+    A200 : #fff0ee,
+    A400 : #ffc4bb,
+    A700 : #ffaea1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+  )
+));
 
 $TpSalaDeJuegos-theme: mat.define-light-theme((
   color: (
@@ -12,7 +107,7 @@ $TpSalaDeJuegos-theme: mat.define-light-theme((
     accent: $TpSalaDeJuegos-accent,
     warn: $TpSalaDeJuegos-warn,
   ),
-  typography: mat.define-typography-config(),
+  typography: mat.define-typography-config($font-family: 'Times New Roman'),
   density: 0
 ));
 

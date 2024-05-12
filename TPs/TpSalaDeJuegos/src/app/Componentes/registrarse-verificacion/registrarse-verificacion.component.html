@@ -6,10 +6,11 @@
             <input matInput [(ngModel)]="nuevoUsuarioMail" placeholder="Correo electrónico">
         </mat-form-field>
         <mat-form-field class="inputClave">
-            <input matInput [(ngModel)]="nuevoUsuarioClave" placeholder="Contraseña">
+            <input matInput [(ngModel)]="nuevoUsuarioClave" type="password" placeholder="Contraseña">
         </mat-form-field>
         <div class="botones">
             <button mat-raised-button color="primary" (click)="Registrarse()" class="boton">Registrarse</button>
+            <button mat-raised-button color="primary" (click)="Volver()" class="boton">Volver</button>
         </div>
       </div>
     </div>

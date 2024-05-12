@@ -30,7 +30,7 @@ export class LoginVerificacionComponent {
       if(respuesta.user.email != null){
         this.usuarioLogeado = new Usuario(respuesta.user.email,this.usuarioClave);
         this.AbrirSnackBar("Bienvenido: "+ this.usuarioLogeado.mail);
-        this.router.navigate(['home']);
+        this.RuteoHome();
       }
     }).catch((e)=>{
       switch (e.code) {
@@ -50,11 +50,15 @@ export class LoginVerificacionComponent {
   IngresoRapido(){
     this.usuarioMail = "tobiasmoretti14@gmail.com";
     this.usuarioClave = "asdfghjkl";
-    this.Login();
   }
 
   AbrirSnackBar(mensaje:any){
-    this.snackBar.open(mensaje, 'Cerrar');
+    this.snackBar.open(mensaje, 'Cerrar',{
+      duration: 2000,
+    });
   }
   
+  RuteoHome(){
+    this.router.navigate(['/home']);
+  }
 }

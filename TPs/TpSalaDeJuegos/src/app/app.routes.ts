@@ -26,6 +26,11 @@ export const routes: Routes = [
         loadComponent: () => import('./Componentes/registrarse-verificacion/registrarse-verificacion.component')
             .then((m) => m.RegistrarseVerificacionComponent)
     },
+    {
+        path: 'juegos',
+        loadChildren: () => import('./Componentes/juegos/juegos.module')
+            .then((m) => m.JuegosModule)
+    },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     {
         path: '**',

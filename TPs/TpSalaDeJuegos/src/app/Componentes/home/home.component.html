@@ -7,22 +7,26 @@
           <i class="material-icons" (mouseover)="mostrarTexto()" (mouseleave)="ocultarTexto()">account_circle</i>
           <div *ngIf="mostrarTooltip" class="tooltip">{{auth.currentUser?.email}}</div>
         </div>
-        <div class="image-container">
-          <img src="../../../assets/cartas.png" alt="Foto Alumno">
-          <img src="../../../assets/dice.png" alt="Foto Alumno">
-        </div>
-        <div class="image-container">
-            <img src="../../../assets/mozart.png" alt="Foto Alumno">
-            <img src="../../../assets/Ahorcado.png" alt="Foto Alumno">
-        </div>
+         <div class="image-container">
+        <img src="../../../assets/cartas.png"  alt="Mayor Menor">
+        <p>Mayor Menor</p>
+        <img src="../../../assets/dice.png"  alt="Adivina el Dado">
+        <p>Adivina el Dado</p>
+    </div>
+    <div class="image-container">
+        <img src="../../../assets/mozart.png" alt="Preguntados">
+        <p>Preguntados</p>
+        <img src="../../../assets/Ahorcado.png" (click)="AbrirRuta('juegos/ahorcado')" alt="Ahorcado">
+        <p>Ahorcado</p>
+    </div>
       </div>
     </ng-container>
     <ng-template #loggedOut>
       <div class="content">
         <div class="button-grid">
-          <button mat-raised-button color="accent" routerLink="/login">Loguearse</button>
           <button mat-raised-button routerLink="/registrarse">Registrarse</button>
         </div>
+        <app-login-verificacion></app-login-verificacion>
       </div>
     </ng-template>
   </div>

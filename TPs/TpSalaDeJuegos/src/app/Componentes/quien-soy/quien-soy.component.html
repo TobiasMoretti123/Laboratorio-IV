@@ -1,10 +1,28 @@
-<div>
-    <label>Nombre Alumno: </label>
-    <p>Tobias Nahuel Moretti</p>
-    <label>Legajo: </label>
-    <p>111024</p>
-    <label>Dni: </label>
-    <p>41668744</p>
-    <div class="contenedor-imagen">
-    <img src="../../../assets/ImagenAlumno.png" alt="Foto Alumno">
-</div>
+<div class="container">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>Información del Alumno</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="info">
+            <ol class="data-list">
+                <li class="data-item">
+                  <mat-label>Nombre Alumno: {{ alumno.nombre }}</mat-label>
+                </li>
+                <li class="data-item">
+                  <mat-label>Legajo: {{ alumno.legajo }}</mat-label>
+                </li>
+                <li class="data-item">
+                  <mat-label>DNI: {{ alumno.dni }}</mat-label>
+                </li>
+              </ol>              
+          <div class="contenedor-imagen">
+            <img src="../../../assets/ImagenAlumno.png" alt="Foto Alumno">
+            <mat-label>Juego Propio:</mat-label>
+            <p>{{ alumno.juegoPropio }}</p>
+          </div>
+        </div>
+        <button mat-raised-button color="primary" (click)="Volver()" class="boton">Volver</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
