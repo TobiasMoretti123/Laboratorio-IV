@@ -19,10 +19,17 @@
           <div class="contenedor-imagen">
             <img src="../../../assets/ImagenAlumno.png" alt="Foto Alumno">
             <mat-label>Juego Propio:</mat-label>
-            <p>{{ alumno.juegoPropio }}</p>
+            <p>Adivina el dado: Es un juego sencillo donde se seleccion un numero del 1 al 6.
+            Luego se tira un dado para averiguar si adivinaste el numero o no.
+            Si adivinaste ganas 1 punto con un maximo de 3 puntos.
+            Si no tienes 5 intentos para adivinar hasta que se pierda el juego.
+            Al finalizar si se optiene victoria absoluta ganas los 3 puntos,
+            si no solo optienes los que allas adivinado.
+            </p>
           </div>
         </div>
         <button mat-raised-button color="primary" (click)="Volver()" class="boton">Volver</button>
+        <mat-progress-spinner *ngIf="mostrarSpinner" diameter="50" color="warn" mode="indeterminate"></mat-progress-spinner>
       </mat-card-content>
     </mat-card>
   </div>

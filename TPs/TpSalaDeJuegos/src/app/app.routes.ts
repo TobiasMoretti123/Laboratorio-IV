@@ -31,6 +31,11 @@ export const routes: Routes = [
         loadChildren: () => import('./Componentes/juegos/juegos.module')
             .then((m) => m.JuegosModule)
     },
+    {
+        path: 'chat',
+        loadComponent: () => import('./Componentes/chat/chat.component')
+            .then((m) => m.ChatComponent)
+    },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     {
         path: '**',

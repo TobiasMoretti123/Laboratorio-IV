@@ -19,9 +19,7 @@ export class HomeComponent {
   constructor(public auth:Auth,public router:Router){}
 
   CerrarSession(){
-    signOut(this.auth).then(() => {
-      console.log(this.auth.currentUser?.email)
-    })
+    signOut(this.auth);
   }
 
   mostrarTexto() {
