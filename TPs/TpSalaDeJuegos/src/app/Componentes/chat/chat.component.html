@@ -1,24 +1,31 @@
-<div class="chat-box">
-    <div class="messages">
-        <div *ngFor="let mensaje of (chatService.mensajes$ | async)">
-          <div *ngIf="mensaje.usuario === auth.currentUser?.email; else otherUser">
-            <div>{{ mensaje.usuario }} {{ mensaje.fecha | date: 'short' }}:</div>
-            <div class="message sent">
-              <div> {{ mensaje.mensaje }}</div>
-            </div>
+<div class="contenedor">
+  <div class="row justify-content-center">
+    <div class="col-md-6 border p-4">
+      <div class="chat-box">
+        <div class="messages">
+          <div *ngFor="let mensaje of (chatService.mensajes$ | async)">
+            <ng-container *ngIf="mensaje.usuario === auth.currentUser?.email; else otherUser">
+              <div class="sent-message">
+                <div class="metadata">{{ mensaje.usuario }} {{ mensaje.fecha | date: 'short' }}</div>
+                <div class="message-sent">{{ mensaje.mensaje }}</div>
+              </div>
+            </ng-container>
+            <ng-template #otherUser>
+              <div class="received-message">
+                <div class="metadata">{{ mensaje.fecha | date: 'short' }} {{ mensaje.usuario }}</div>
+                <div class="message-received">{{ mensaje.mensaje }}</div>
+              </div>
+            </ng-template>
           </div>
-          <ng-template #otherUser>
-            <div>{{ mensaje.fecha | date: 'short' }}</div>
-              <div>{{ mensaje.mensaje }}</div>
-            <div class="message received">
-              <div>{{ mensaje.usuario }}</div> 
-            </div>
-          </ng-template>
         </div>
-      </div>  
-    <div class="input-area">
-      <input type="text" [(ngModel)]="nuevoMensaje" placeholder="Escribe un mensaje...">
-      <button (click)="enviarMensaje()">Enviar</button>
+      </div>
+      <div class="input-area">
+        <input matInput type="text" [(ngModel)]="nuevoMensaje" placeholder="Escribe un mensaje...">
+        <button mat-raised-button color="warn" (click)="enviarMensaje()">Enviar</button>
+      </div>
+      <div class="volver">
+        <button mat-raised-button color="primary" (click)="Volver()">Volver</button>
+      </div>
     </div>
   </div>
-  
+</div>
