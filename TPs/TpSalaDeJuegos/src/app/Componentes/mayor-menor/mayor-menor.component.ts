@@ -57,7 +57,7 @@ export class MayorMenorComponent implements OnInit {
       setTimeout(() => {
         this.mostrarSegundaCarta=false;
         this.SacarCartas();
-      }, 2000)
+      }, 1000)
   }
 
   EstadoDelJuego(){

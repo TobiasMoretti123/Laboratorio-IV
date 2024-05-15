@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Auth,signOut } from '@angular/fire/auth';
 import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,10 +13,12 @@ import { LoginVerificacionComponent } from '../login-verificacion/login-verifica
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent{
   mostrarTooltip = false;
   
-  constructor(public auth:Auth,public router:Router){}
+  constructor(public auth:Auth,public router:Router){
+  }
+  
 
   CerrarSession(){
     signOut(this.auth);
