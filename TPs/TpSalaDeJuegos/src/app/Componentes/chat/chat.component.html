@@ -1,1 +1,24 @@
-<p>chat works!</p>
+<div class="chat-box">
+    <div class="messages">
+        <div *ngFor="let mensaje of (chatService.mensajes$ | async)">
+          <div *ngIf="mensaje.usuario === auth.currentUser?.email; else otherUser">
+            <div>{{ mensaje.usuario }} {{ mensaje.fecha | date: 'short' }}:</div>
+            <div class="message sent">
+              <div> {{ mensaje.mensaje }}</div>
+            </div>
+          </div>
+          <ng-template #otherUser>
+            <div>{{ mensaje.fecha | date: 'short' }}</div>
+              <div>{{ mensaje.mensaje }}</div>
+            <div class="message received">
+              <div>{{ mensaje.usuario }}</div> 
+            </div>
+          </ng-template>
+        </div>
+      </div>  
+    <div class="input-area">
+      <input type="text" [(ngModel)]="nuevoMensaje" placeholder="Escribe un mensaje...">
+      <button (click)="enviarMensaje()">Enviar</button>
+    </div>
+  </div>
+  
