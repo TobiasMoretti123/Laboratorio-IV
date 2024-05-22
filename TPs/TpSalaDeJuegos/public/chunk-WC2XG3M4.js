@@ -1,1 +1,0 @@
-import{Gb as i,Ob as p,lb as r,ma as o,mb as a}from"./chunk-YPGK2BPN.js";var m=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=o({type:e,selectors:[["app-error"]],standalone:!0,features:[p],decls:2,vars:0,template:function(n,c){n&1&&(r(0,"p"),i(1,"404 Page Not Found"),a())}});let t=e;return t})();export{m as ErrorComponent};

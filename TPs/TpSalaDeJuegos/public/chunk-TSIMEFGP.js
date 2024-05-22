@@ -1,1 +1,0 @@
-import{Sa as o,Ta as i,Ya as a,da as r,db as s}from"./chunk-T3SVGVHJ.js";var d=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=r({type:e,selectors:[["app-error"]],standalone:!0,features:[s],decls:2,vars:0,template:function(n,c){n&1&&(o(0,"p"),a(1,"error works!"),i())}});let t=e;return t})();export{d as ErrorComponent};
