@@ -8,17 +8,17 @@
           <i class="material-icons" (mouseover)="mostrarTexto()" (mouseleave)="ocultarTexto()">account_circle</i>
           <div *ngIf="mostrarTooltip" class="tooltip">{{auth.currentUser?.email}}</div>
         </div>
-         <div class="image-container">
+        <div class="image-container">
+        <p class="Mayor">Mayor Menor</p>
         <img src="../../../assets/cartas.png"  (click)="AbrirRuta('juegos/mayor-menor')" alt="Mayor Menor">
-        <p>Mayor Menor</p>
-        <img src="../../../assets/dice.png"  alt="Adivina el Dado">
-        <p>Adivina el Dado</p>
+        <p class="Adivina">Adivina el Dado</p>
+        <img src="../../../assets/dice.png" (click)="AbrirRuta('juegos/dado')" alt="Adivina el Dado">
     </div>
     <div class="image-container">
-        <img src="../../../assets/mozart.png" alt="Preguntados">
-        <p>Preguntados</p>
+      <p class="Preguntados">Preguntados</p>
+        <img src="../../../assets/mozart.png" (click)="AbrirRuta('juegos/preguntados')" alt="Preguntados">
+        <p class="Ahorcado">Ahorcado</p>
         <img src="../../../assets/Ahorcado.png" (click)="AbrirRuta('juegos/ahorcado')" alt="Ahorcado">
-        <p>Ahorcado</p>
     </div>
       </div>
     </ng-container>

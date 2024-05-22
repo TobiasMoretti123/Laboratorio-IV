@@ -1,18 +1,17 @@
+<div class="button-grid">
+  <button mat-raised-button (click)="Volver()">Volver</button>
+</div>
 <div class="contenedor">
-    <div class="row justify-content-center">
-      <div class="col-md-6 border p-4">
-        <h1 class="texto">Ingresar usuario</h1>
-        <mat-form-field class="inputCorreo">
-            <input matInput [(ngModel)]="nuevoUsuarioMail" placeholder="Correo electrónico">
-        </mat-form-field>
-        <mat-form-field class="inputClave">
-            <input matInput [(ngModel)]="nuevoUsuarioClave" type="password" placeholder="Contraseña">
-        </mat-form-field>
-        <div class="botones">
-            <button mat-raised-button color="primary" (click)="Registrarse()" class="boton">Registrarse</button>
-            <button mat-raised-button color="primary" (click)="Volver()" class="boton">Volver</button>
-        </div>
-      </div>
-    </div>
+  <h1 class="texto">Ingresar Usuario</h1>
+  <div class="inputs">
+  <mat-form-field class="input">
+      <input matInput [(ngModel)]="nuevoUsuarioMail" placeholder="Correo electrónico">
+  </mat-form-field>
+  <mat-form-field class="input">
+    <input matInput [(ngModel)]="nuevoUsuarioClave" type="password" placeholder="Contraseña">
+  </mat-form-field>
   </div>
-  
+  <div class="botones">
+    <button mat-raised-button color="primary" class="boton" (click)="Registrarse()">Login</button>
+</div>
+</div>

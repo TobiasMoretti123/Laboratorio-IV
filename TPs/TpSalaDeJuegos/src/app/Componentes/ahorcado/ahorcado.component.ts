@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth, signOut } from '@angular/fire/auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -9,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class AhorcadoComponent implements OnInit{
   botones: string[] = 
-  ['Q','W','E','R','T','Y','U','I','O','P',
-  'A','S','D','F','G','H','J','K','L',
-  'Z','X','C','V','B','N','M'];
+  ['A','B','C','D','E','F','G','H','I','J',
+  'K','L','M','N','O','P','Q','R','S',
+  'T','U','V','W','X','Y','Z'];
   palabras: string [] = [
     'Mozart','Beethoven','Saglieri','Bach','Vivaldi',
     'Chopin','Pagaginini','Liszt','Brahms','Schubert',
@@ -29,8 +30,17 @@ export class AhorcadoComponent implements OnInit{
   cabeza:boolean = false;
   brazos:boolean = false;
   piernas:boolean = false;
+  mostrarUsuario:boolean = false;
+  mostrarHelp:boolean = false;
+  blockearJugarDeNuevo:boolean = true;
 
-  constructor(public snackBar:MatSnackBar,public router:Router){}
+  constructor(public snackBar:MatSnackBar,public router:Router,public auth:Auth){}
+
+  CerrarSession(){
+    signOut(this.auth);
+    this.AbrirSnackBar('Se a cerrado la sesion');
+    this.RuteoHome();
+  }
 
   ngOnInit(): void {
     this.palabraSeleccionada = this.palabras[Math.floor(Math.random() * this.palabras.length)].toUpperCase();
@@ -54,14 +64,13 @@ export class AhorcadoComponent implements OnInit{
     .filter(letra => this.letrasCorrectas.includes(letra)).length;
     if(letrasPorDefecto === this.palabraSeleccionada.length){
       this.esVictoria = true;
-      this.AbrirSnackBar('Felicitaciones Ganaste '+this.letrasCorrectas.length+" Puntos" 
-      + '\nPreciona volver para ir al menu principal'
-      );
+      this.blockearJugarDeNuevo = false;
+      this.AbrirSnackBar('Felicitaciones Ganaste '+ this.letrasCorrectas.length+" Puntos");
     }
     else if (this.errores >= this.limiteDeErrores){
       this.esVictoria = false;
-      this.AbrirSnackBar('Perdiste, la palabra era: '+ this.palabraSeleccionada + 
-      '\nPreciona volver para ir al menu principal');
+      this.blockearJugarDeNuevo = false;
+      this.AbrirSnackBar('Perdiste, la palabra era: '+ this.palabraSeleccionada);
     }
   }
 
@@ -96,5 +105,41 @@ export class AhorcadoComponent implements OnInit{
       default:
         break;
     }
+  }
+
+  ReiniciarJuego(){
+    this.errores = 0;
+    this.esVictoria = false;
+    this.palabraSeleccionada = this.palabras[Math.floor(Math.random() * this.palabras.length)].toUpperCase();
+    this.palabraSeleccionadaPorLetra = this.palabraSeleccionada.split('');
+    this.letrasIncorrectas= [];
+    this.letrasCorrectas= [];
+    this.limiteDeErrores = 4;
+    this.errores = 0;
+    this.letraIngresada = '';
+    this.torzo = false;
+    this.cabeza = false;
+    this.brazos= false;
+    this.piernas= false; 
+  }
+
+  MostrarHelp() {
+    this.mostrarHelp = true;
+  }
+
+  OcultarHelp() {
+    this.mostrarHelp = false;
+  }
+
+  MostrarUsuario() {
+    this.mostrarUsuario = true;
+  }
+
+  OcultarUsuario() {
+    this.mostrarUsuario = false;
+  }
+
+  Pista(){
+    this.AbrirSnackBar('Es un compositor de musica clasica');
   }
 }

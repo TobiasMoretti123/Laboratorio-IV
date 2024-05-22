@@ -1,1 +1,48 @@
-<p>dado works!</p>
+<div class="button-grid">
+    <button mat-raised-button (click)="Volver()">Volver</button>
+    <button mat-raised-button routerLink="/chat">Chat</button>
+    <button mat-raised-button routerLink="/quien-soy">Sobre Mí</button>
+    <button mat-raised-button color="warn" (click)="CerrarSession()">Cerrar Sesión</button>
+    <i class="material-icons" (mouseover)="mostrarTexto()" (mouseleave)="ocultarTexto()">account_circle</i>
+    <div *ngIf="mostrarTooltip" class="tooltip">{{auth.currentUser?.email}}</div>
+  </div>
+<div class="container">
+    <h1>Adivina que Valor de Dado Va a salir</h1>
+    <div class="dadoMuestra">
+        <img src="../../../assets/1.png" *ngIf="!mostrarDado">
+    </div>
+    <div class="dado" [ngSwitch]="valorDelDado" *ngIf="mostrarDado">
+        <div *ngSwitchCase="1">
+            <img src="../../../assets/1.png">
+        </div>
+        <div *ngSwitchCase="2">
+            <img src="../../../assets/2.png">
+        </div>
+        <div *ngSwitchCase="3">
+            <img src="../../../assets/3.png">
+        </div>
+        <div *ngSwitchCase="4">
+            <img src="../../../assets/4.png">
+        </div>
+        <div *ngSwitchCase="5">
+            <img src="../../../assets/5.png">
+        </div>
+        <div *ngSwitchCase="6">
+            <img src="../../../assets/6.png">
+        </div>
+    </div>
+    <div class="botones">
+        <button mat-raised-button color="accent" *ngFor="let letra of botones" (click)="CompararDado(letra)" 
+            [disabled]="blockearBotones">
+            {{ letra }}
+        </button> 
+    </div>
+    <div class="sidebar" >
+        <p class="puntos">Puntos: {{puntos}}</p>
+        <p class="intentos">Intentos: {{intentos}}</p>
+    </div>
+    <button class="reintentar" mat-raised-button color="primary" (click)="ReiniciarJuego()" [disabled]="blockearJugarDeNuevo">Volver a Jugar</button>
+</div>
+
+
+

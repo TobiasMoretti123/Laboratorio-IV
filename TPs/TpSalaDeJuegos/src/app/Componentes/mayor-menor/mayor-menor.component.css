@@ -1,18 +1,51 @@
-.container {
+.button-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url('../../../assets/grid.png');
+    padding: 10px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; 
+    justify-content: flex-end;
 }
 
-.border {
-    border: 4px solid #615305;
-    border-radius: 10px; 
+.button-grid button {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 20px 30px;
+  font-size: 20px;
+}
+
+.container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.5); 
+    padding: 90px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.content {
+  padding-top: 50px; 
+}
+
+.material-icons{
+  margin-left: 10px;
+  margin-top: 2px;
+  font-size: 40px; 
 }
 
 .cards {
     display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+
+.imagenCarta{
+    width: 350px; 
+    height: auto;
 }
 
 .cards div {
@@ -32,12 +65,55 @@
     margin-bottom: 10px;
     margin-right: 70px;
     margin-left: 70px;
+    padding: 20px 30px;
+    font-size: 20px;
 }
 
-.botonVolver{
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.texto {
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white; 
+    padding: 10px; 
+    border-radius: 5px; 
+}
+
+.puntos {
+    color: #ffffff;
+    background-color: rgba(0, 0, 255, 0.5);
+    border-radius: 20px; 
+    padding: 10px 20px;
+    font-size: 18px; 
+    text-align: left;
+}
+
+.estadoDelJuego {
+    width: 100%; 
+  }
+
+.vidas {
+    color: #ffffff;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 20px; 
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    z-index: 9999; 
+  }
+
+.rejugar{
+    display: block;
+    padding: 20px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 0;
 }

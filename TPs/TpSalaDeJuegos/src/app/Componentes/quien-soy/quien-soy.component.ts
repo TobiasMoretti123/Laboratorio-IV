@@ -5,6 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { Auth, signOut } from '@angular/fire/auth';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-quien-soy',
@@ -15,22 +17,35 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 })
 export class QuienSoyComponent{
   mostrarSpinner:boolean = false;
-  alumno = {
-    nombre: 'Tobias Nahuel Moretti',
-    legajo: '111024',
-    dni: '41668744',
-  };
+  mostrarUsuario:boolean = false;
 
-  constructor(public router: Router){}
+  constructor(public router: Router, public auth: Auth, public snackBar: MatSnackBar){}
 
   Volver(){
     this.RuteoHome();
   }
+
+  CerrarSession(){
+    signOut(this.auth);
+    this.AbrirSnackBar('Se a cerrado la sesion');
+    this.RuteoHome();
+  }
+
+  AbrirSnackBar(mensaje:any){
+    this.snackBar.open(mensaje, 'Cerrar',{
+      duration: 2000,
+    });
+  }
   
   RuteoHome(){
-    this.mostrarSpinner = true;
-    setTimeout(() => {
-      this.router.navigate(['/home']);
-    }, 3000)
+    this.router.navigate(['/home']);
+  }
+
+  MostrarUsuario() {
+    this.mostrarUsuario = true;
+  }
+
+  OcultarUsuario() {
+    this.mostrarUsuario = false;
   }
 }

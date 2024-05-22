@@ -1,37 +1,37 @@
+<div class="button-grid">
+  <button mat-raised-button (click)="Volver()">Volver</button>
+  <button mat-raised-button routerLink="/chat">Chat</button>
+  <button mat-raised-button routerLink="/quien-soy">Sobre Mí</button>
+  <button mat-raised-button color="warn" (click)="CerrarSession()">Cerrar Sesión</button>
+  <i class="material-icons" (mouseover)="MostrarUsuario()" (mouseleave)="OcultarUsuario()">account_circle</i>
+  <div *ngIf="mostrarUsuario" class="tooltip">{{auth.currentUser?.email}}</div>
+</div>
 <div class="container">
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>Información del Alumno</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="info">
-            <ol class="data-list">
-                <li class="data-item">
-                  <mat-label>Nombre Alumno: {{ alumno.nombre }}</mat-label>
-                </li>
-                <li class="data-item">
-                  <mat-label>Legajo: {{ alumno.legajo }}</mat-label>
-                </li>
-                <li class="data-item">
-                  <mat-label>DNI: {{ alumno.dni }}</mat-label>
-                </li>
-              </ol>              
-          <div class="contenedor-imagen">
-            <img src="../../../assets/ImagenAlumno.png" alt="Foto Alumno">
-            <mat-label>Juego Propio:</mat-label>
-            <p>Adivina el dado: Es un juego sencillo donde se seleccion un numero del 1 al 6.
+  <h1>Información del Alumno</h1>
+    <div class="info">
+      <ol class="data-list">
+        <li class="data-item">
+          <mat-label>Nombre Alumno: Tobias Nahuel Moretti</mat-label>
+            </li>
+              <li class="data-item">
+                <mat-label>Legajo: 111024</mat-label>
+              </li>
+            <li class="data-item">
+          <mat-label>DNI: 41668744</mat-label>
+        </li>
+      </ol>
+      <div class="contenedor-imagen">
+        <img src="../../../assets/ImagenAlumno.png" alt="Foto Alumno">
+      </div>
+        <div class="juego-propio">
+          <mat-label>Juego Propio:</mat-label>
+          <p>Adivina el dado: Es un juego sencillo donde se selecciona un numero del 1 al 6.
             Luego se tira un dado para averiguar si adivinaste el numero o no.
-            Si adivinaste ganas 1 punto con un maximo de 3 puntos.
-            Si no tienes 5 intentos para adivinar hasta que se pierda el juego.
-            Al finalizar si se optiene victoria absoluta ganas los 3 puntos,
-            si no solo optienes los que allas adivinado.
-            </p>
-          </div>
-        </div>
-        <div class="volver">
-        <button mat-raised-button color="primary" (click)="Volver()" class="boton">Volver</button>
-        </div>
-        <mat-progress-spinner *ngIf="mostrarSpinner" diameter="50" color="warn" mode="indeterminate"></mat-progress-spinner>
-      </mat-card-content>
-    </mat-card>
-  </div>
+            Si adivinaste ganas 1 punto.
+            Si no tienes 10 intentos para adivinar hasta que se termine el juego.
+            Al finalizar se contabilizan los puntos.
+          </p>
+        </div> 
+    </div>  
+</div>              
+        

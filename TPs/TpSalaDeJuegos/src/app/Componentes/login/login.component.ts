@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Usuario } from '../../Clases/Usuario';
 import { Subscription } from 'rxjs';
-import { addDoc,Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { addDoc, Firestore, collection, collectionData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',

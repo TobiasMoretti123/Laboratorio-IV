@@ -12,10 +12,10 @@ export class MayorMenorAPIService {
   constructor(private http: HttpClient) { }
 
   ObtenerUnNuevoMazo(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/new/`);
+    return this.http.get(`${this.apiUrl}/new/shuffle`);
   }
 
   ObtenerCartas(deckId: string, count: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/new/draw/?count=${count}`);
+    return this.http.get(`${this.apiUrl}/${deckId}/draw/?count=${count}`);
   }
 }

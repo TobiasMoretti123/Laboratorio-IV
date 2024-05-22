@@ -21,6 +21,7 @@ export class RegistrarseVerificacionComponent {
   banderaError:boolean = false;
   mensajeError: string = "";
   router: Router = new Router();
+  mostrarTooltip:boolean = false;
 
   constructor(public auth:Auth,public snackBar:MatSnackBar){}
 
@@ -67,5 +68,13 @@ export class RegistrarseVerificacionComponent {
 
   Volver(){
     this.RuteoHome();
+  }
+
+  mostrarTexto() {
+    this.mostrarTooltip = true;
+  }
+
+  ocultarTexto() {
+    this.mostrarTooltip = false;
   }
 }

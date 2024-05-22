@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MayorMenorAPIService } from '../../Servicios/mayor-menor-api.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Auth, signOut } from '@angular/fire/auth';
 
 
 @Component({
@@ -14,11 +15,17 @@ export class MayorMenorComponent implements OnInit {
   cartas: any[] = [];
   valorDeCartas: string [] = [];
   esMayor: boolean = true;
-  conteoErrores: number = 0;
-  conteoAciertos: number = 0;
+  intentos:number = 10;
+  puntos:number = 0;
   desabilitarBotones: boolean = false;
   mostrarSegundaCarta: boolean = false;
-  constructor(private servicio: MayorMenorAPIService, private router: Router, private snackBar: MatSnackBar) { }
+  mostrarTooltip:boolean =false;
+  blockearRejugar:boolean = true;
+
+  constructor(private servicio: MayorMenorAPIService, 
+    private router: Router, 
+    private snackBar: MatSnackBar,
+    public auth:Auth) { }
 
   ngOnInit(): void {
     this.servicio.ObtenerUnNuevoMazo().subscribe((r:any) =>{
@@ -35,7 +42,7 @@ export class MayorMenorComponent implements OnInit {
 
   CompararCartas(esMayor: boolean): void {
     this.valorDeCartas = [];
-  
+    this.desabilitarBotones = true;
     this.cartas.forEach((carta: any) => {
       this.valorDeCartas.push(carta.value);
     });
@@ -43,31 +50,40 @@ export class MayorMenorComponent implements OnInit {
     if ((esMayor && this.valorDeCartas[1] >= this.valorDeCartas[0]) ||
         (!esMayor && this.valorDeCartas[1] <= this.valorDeCartas[0])) {
       this.esMayor = true;
-      this.conteoAciertos++;
+      this.puntos++;
+      this.intentos--;
       this.mostrarSegundaCarta = true;
-      this.AbrirSnackBar(`adivinaste intentos restantes para ganar: ${3 - this.conteoAciertos}`);
     } else {
       this.esMayor = false;
       this.mostrarSegundaCarta = true;
-      this.conteoErrores++;
-      this.AbrirSnackBar(`No adivinaste intentos restantes: ${5 - this.conteoErrores}`);
+      this.intentos--;
     }
+
+    const temporal = this.cartas[0];
+    this.cartas[0] = this.cartas[1];
+    this.cartas[1] = temporal
     
     this.EstadoDelJuego();
       setTimeout(() => {
-        this.mostrarSegundaCarta=false;
-        this.SacarCartas();
-      }, 1000)
+        this.mostrarSegundaCarta = false;
+        this.SacarNuevaCarta();
+        this.desabilitarBotones = false;
+        if(this.intentos == 0){
+          this.desabilitarBotones = true;
+        }
+      }, 2000)
+  }
+
+  SacarNuevaCarta() {
+    this.servicio.ObtenerCartas(this.idMazo, 1).subscribe((r: any) => {
+      this.cartas[1] = r.cards[0];
+    });
   }
 
   EstadoDelJuego(){
-    if(this.conteoErrores == 5){
-      this.AbrirSnackBar(`Perdiste, pero adivinaste ${this.conteoAciertos} 
-      \nEsa cantidad se agrego a tu puntuacion\nPresiona volver para ir al menu principal`);
-      this.desabilitarBotones = true;
-    }else if (this.conteoAciertos == 3){
-      this.desabilitarBotones = true;
-      this.AbrirSnackBar(`Ganaste ${this.conteoAciertos} Puntos\nPresiona volver para ir al menu principal`);
+    if(this.intentos == 0){
+      this.blockearRejugar = false;
+      this.AbrirSnackBar(`Obtuviste ${this.puntos} Puntos`);
     }
   }
 
@@ -83,5 +99,25 @@ export class MayorMenorComponent implements OnInit {
     this.snackBar.open(mensaje, 'Cerrar',{
       duration: 4000,
     });
+  }
+
+  mostrarTexto() {
+    this.mostrarTooltip = true;
+  }
+
+  ocultarTexto() {
+    this.mostrarTooltip = false;
+  }
+
+  CerrarSession(){
+    signOut(this.auth);
+    this.RuteoHome()
+    this.AbrirSnackBar('Se a cerrado la sesion');
+  }
+
+  JugarDeNuevo(){
+    this.intentos = 10;
+    this.puntos = 0;
+    this.desabilitarBotones = false;
   }
 }
