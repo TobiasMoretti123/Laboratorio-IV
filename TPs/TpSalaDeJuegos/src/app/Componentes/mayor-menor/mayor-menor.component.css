@@ -22,7 +22,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.5); 
-    padding: 90px;
+    padding: 10px;
     border-radius: 10px;
     text-align: center;
 }
@@ -44,7 +44,7 @@
 }
 
 .imagenCarta{
-    width: 350px; 
+    width: 250px; 
     height: auto;
 }
 

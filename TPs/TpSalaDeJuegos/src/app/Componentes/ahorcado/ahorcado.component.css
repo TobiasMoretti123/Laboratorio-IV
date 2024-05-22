@@ -32,9 +32,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.5); 
-    padding: 20px;
     border-radius: 10px;
     text-align: center;
+    margin-top: 25px;
     }
 
 
@@ -80,49 +80,50 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    height: 600px; 
+    height: 400px; 
     position: relative;
 }
 
 .horca img {
-    width: 500px;
+    width: 300px;
 }
 
 .cabeza img {
-    width: 150px; 
+    width: 60px; 
     position: absolute;
-    top: 65px;
-    left: 32%; 
+    top: 19%;
+    left: 37%; 
     transform: translateX(-50%);
 }
 
 .torzo img {
-    width: 30px; 
+    width: 10px; 
     position: absolute;
-    top: 201px; 
-    left: 32%; 
+    top: 32%; 
+    left: 37%; 
     transform: translateX(-50%);
 }
 
 .brazos img {
-    width: 220px; 
+    width: 100px; 
     position: absolute;
-    top: 201px; 
-    left: 32%;  
+    top: 32%; 
+    left: 37%;   
     transform: translateX(-50%);
 }
 
 .piernas img {
-    width: 170px;
+    width: 70px;
     position: absolute;
-    top: 437px; 
-    left: 32%;  
+    top: 52%; 
+    left: 37%;  
     transform: translateX(-50%);
 }
 
 .reintentar{
   margin-top: 10px;
   margin-left: 30px;
+  margin-bottom: 10px;
   display: block;
   padding: 20px 30px;
   font-size: 20px;

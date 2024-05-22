@@ -16,8 +16,8 @@
         </div>             
     </div>
     <div class="botones">
-        <button mat-raised-button color="accent" (click)="CompararCartas(true)" [disabled]="desabilitarBotones">Es Mayor</button>
-        <button mat-raised-button color="accent" (click)="CompararCartas(false)"[disabled]="desabilitarBotones">Es Menor</button>
+        <button mat-raised-button color="accent" (click)="EsMayor()" [disabled]="desabilitarBotones">Es Mayor</button>
+        <button mat-raised-button color="accent" (click)="EsMenor()" [disabled]="desabilitarBotones">Es Menor</button>
     </div>
     <div class="estadoDeJuego">
         <p class="texto puntos">Puntos: {{ puntos }}</p>

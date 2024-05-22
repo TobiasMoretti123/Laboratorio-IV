@@ -48,4 +48,8 @@ export class QuienSoyComponent{
   OcultarUsuario() {
     this.mostrarUsuario = false;
   }
+
+  Chat(){
+    this.router.navigate(['/chat']);
+  }
 }

@@ -1,15 +1,19 @@
+import { initializeApp } from "firebase/app";
+
 export const enviroment= {
 
-  apiKey: "AIzaSyDd_IwvcPuSI3VhjEbEK_LzS7U6FDzr8Iw",
+  apiKey: "AIzaSyDvO8cDmFziyZmvzBlO7lvaIcP7dPn2mck",
 
-  authDomain: "tpsaladejuegos-2c37d.firebaseapp.com",
+  authDomain: "sala-de-juegos-56760.firebaseapp.com",
 
-  projectId: "tpsaladejuegos-2c37d",
+  projectId: "sala-de-juegos-56760",
 
-  storageBucket: "tpsaladejuegos-2c37d.appspot.com",
+  storageBucket: "sala-de-juegos-56760.appspot.com",
 
-  messagingSenderId: "17586323276",
+  messagingSenderId: "959073599409",
 
-  appId: "1:17586323276:web:39ad56499859f9fc9bd9e9"
+  appId: "1:959073599409:web:d09ea7a3c227fd31cf0790"
 
 };
+
+const app = initializeApp(enviroment);

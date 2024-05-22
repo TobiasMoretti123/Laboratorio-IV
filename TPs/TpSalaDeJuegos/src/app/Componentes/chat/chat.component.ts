@@ -68,4 +68,8 @@ export class ChatComponent implements OnInit{
   OcultarUsuario() {
     this.mostrarUsuario = false;
   }
+
+  SobreMi(){
+    this.router.navigate(['/quien-soy']);
+  }
 }

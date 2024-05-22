@@ -14,7 +14,6 @@ export class MayorMenorComponent implements OnInit {
   idMazo:string = "";
   cartas: any[] = [];
   valorDeCartas: string [] = [];
-  esMayor: boolean = true;
   intentos:number = 10;
   puntos:number = 0;
   desabilitarBotones: boolean = false;
@@ -40,21 +39,49 @@ export class MayorMenorComponent implements OnInit {
     });
   }
 
-  CompararCartas(esMayor: boolean): void {
+  EsMayor(){
     this.valorDeCartas = [];
     this.desabilitarBotones = true;
     this.cartas.forEach((carta: any) => {
       this.valorDeCartas.push(carta.value);
     });
-  
-    if ((esMayor && this.valorDeCartas[1] >= this.valorDeCartas[0]) ||
-        (!esMayor && this.valorDeCartas[1] <= this.valorDeCartas[0])) {
-      this.esMayor = true;
+
+    if ((this.valorDeCartas[1] >= this.valorDeCartas[0])) {
       this.puntos++;
       this.intentos--;
       this.mostrarSegundaCarta = true;
     } else {
-      this.esMayor = false;
+      this.mostrarSegundaCarta = true;
+      this.intentos--;
+    }
+
+    const temporal = this.cartas[0];
+    this.cartas[0] = this.cartas[1];
+    this.cartas[1] = temporal
+    
+    this.EstadoDelJuego();
+      setTimeout(() => {
+        this.mostrarSegundaCarta = false;
+        this.SacarNuevaCarta();
+        this.desabilitarBotones = false;
+        if(this.intentos == 0){
+          this.desabilitarBotones = true;
+        }
+      }, 2000)
+  }
+
+  EsMenor(){
+    this.valorDeCartas = [];
+    this.desabilitarBotones = true;
+    this.cartas.forEach((carta: any) => {
+      this.valorDeCartas.push(carta.value);
+    });
+
+    if ((this.valorDeCartas[1] <= this.valorDeCartas[0])) {
+      this.puntos++;
+      this.intentos--;
+      this.mostrarSegundaCarta = true;
+    } else {
       this.mostrarSegundaCarta = true;
       this.intentos--;
     }
@@ -119,5 +146,6 @@ export class MayorMenorComponent implements OnInit {
     this.intentos = 10;
     this.puntos = 0;
     this.desabilitarBotones = false;
+    this.blockearRejugar = true;
   }
 }
