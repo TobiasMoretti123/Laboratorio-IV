@@ -1,0 +1,21 @@
+[debug] [2024-05-30T20:09:35.889Z] ----------------------------------------------------------------------
+[debug] [2024-05-30T20:09:35.891Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Tobias\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2024-05-30T20:09:35.892Z] CLI Version:   13.10.2
+[debug] [2024-05-30T20:09:35.892Z] Platform:      win32
+[debug] [2024-05-30T20:09:35.892Z] Node Version:  v21.7.3
+[debug] [2024-05-30T20:09:35.892Z] Time:          Thu May 30 2024 17:09:35 GMT-0300 (Argentina Standard Time)
+[debug] [2024-05-30T20:09:35.893Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-05-30T20:09:35.902Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-05-30T20:09:35.902Z] > authorizing via signed-in user (tobiasmoretti14@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  E:\Facu\Laboratorio IV\Parciales\SimulacroParcial
+

@@ -1,0 +1,53 @@
+<div class="grid">
+    <button class="grid-button" (click)="AbrirRuta('bienvenido')">Volver</button>
+    <button class="grid-button" (click)="AbrirRuta('actor/alta')">Agregar Actores</button>
+</div>
+
+<div class="contenedor">
+  <form [formGroup]="form" (ngSubmit)="AltaPelicula()">
+    <div class="dato">
+      <label class="form-label" for="nombrePelicula">Nombre Película</label>
+      <input type="text" class="form-control" id="nombrePelicula" formControlName="nombrePelicula">
+      <ng-container *ngIf="nombrePelicula?.hasError('pattern')">
+        <small class="text-danger">Sólo debe contener letras</small>
+      </ng-container>
+    </div>
+  
+    <div class="dato">
+      <label class="form-label" for="cantidadPublico">Cantidad de Público</label>
+      <input type="number" class="form-control" id="cantidadPublico" formControlName="cantidadPublico">
+      <ng-container *ngIf="cantidadPublico?.hasError('min')">
+        <small class="text-danger">La cantidad de público no puede ser negativa</small>
+      </ng-container>
+    </div>
+  
+    <div class="dato">
+      <label class="form-label" for="fotoPelicula">Foto de Película</label>
+      <input type="text" class="form-control" id="fotoPelicula" formControlName="fotoPelicula">
+      <small class="text-danger">
+        {{fotoPelicula?.getError('noEsImagen')}}
+      </small>
+    </div>
+  
+    <div class="dato">
+      <label class="form-label" for="tipo">Tipo de Película</label>
+      <input type="text" class="form-control" id="tipo" formControlName="tipo">
+      <small class="text-danger">
+        {{tipo?.getError('noCoincide')}}
+      </small>
+    </div>
+
+    <div class="dato">
+      <label class="form-label" for="actor">Selecione Actor de La Tabla</label>
+        <p>{{actorSeleccionado?.nombre}}</p>
+    </div>
+
+    <div class="dato">
+      <button type="submit" class="form-button" [disabled]="!form.valid">Enviar</button>
+    </div>
+  </form>
+</div>
+<div class="dato-actor">
+  <app-tabla-actor (actorSeleccionado)="OnSeleccionarActor($event)"></app-tabla-actor>
+</div>
+

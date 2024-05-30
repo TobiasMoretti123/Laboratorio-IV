@@ -1,0 +1,9 @@
+<div class="contenedor">
+    <div *ngFor="let pelicula of peliculas">
+        <img class="imagen" [src]="pelicula.fotoPelicula" (click)="mostrarDetalle(pelicula)">
+      </div>
+</div>
+
+<div class="detalles" *ngIf="msotrarPeliculas">
+    <app-detalle-pelicula [pelicula]="peliculaSeleccionada"></app-detalle-pelicula>
+</div>

@@ -1,0 +1,4 @@
+<h2>Tabla Actores</h2>
+<div *ngFor="let actor of actores; let i = index" (click)="SeleccionarActor($event,actor)">
+  {{actor.nombre}}
+</div>

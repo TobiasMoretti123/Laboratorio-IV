@@ -1,0 +1,5 @@
+<select (change)="SeleccionarPais($event)">
+  <option *ngFor="let pais of paises; let i = index" [value]="i">
+      {{ pais.flag }} {{ pais.name.common }}
+  </option>
+</select>

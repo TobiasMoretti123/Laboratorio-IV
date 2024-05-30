@@ -1,0 +1,19 @@
+.contenedor {
+    display: flex;
+    background-color: rgba(31, 24, 105, 0.5);
+    margin-top: 20px;
+}
+
+.imagen {
+    width: 300px;
+    margin-left: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-right: 40px;
+}
+
+.detalles {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}

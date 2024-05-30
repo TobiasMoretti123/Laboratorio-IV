@@ -1,0 +1,19 @@
+<form [formGroup]="form" (ngSubmit)="AltaActor()">
+    <label class="form-label" for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombreActor" formControlName="nombreActor">
+          <ng-container *ngIf="nombre?.hasError('pattern')">
+            <small class="text-danger">Sólo debe contener letras</small>
+          </ng-container>
+    
+    <label class="form-label" for="edad">Edad</label>
+        <input type="number" class="form-control" id="edad" formControlName="edad">
+          <ng-container *ngIf="edad?.hasError('min')">
+            <small class="text-danger">La Edad no puede ser negativa</small>
+          </ng-container>
+
+    <label class="form-label" for="nacionalidad">Nacionalidad</label>
+        <app-tabla-paises (countrySelected)="OnSeleccionarPais($event)"></app-tabla-paises>
+    <button type="submit" [disabled]="!form.valid">
+        Enviar
+    </button>
+</form>

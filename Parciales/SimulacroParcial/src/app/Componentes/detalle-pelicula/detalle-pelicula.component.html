@@ -1,0 +1,14 @@
+<div class="contenedor">
+    <div class="pelicula" *ngIf="pelicula">
+        <div class="info">
+            <ol class="data-list">
+                <h2 class="titulo">{{pelicula.Nombre}}</h2>
+                <p class="tipo">Tipo: {{pelicula.tipo}}</p>
+                <p class="cantidadPublico">Cantidad Publico: {{pelicula.cantidadPublico}}</p>
+                <p class="fechaEstreno">Fecha de estreno: {{ pelicula.fechaEstreno.toDate() | date:'dd/MM/yyyy' }}</p>
+                <p class="actor">Actor: {{pelicula.actor}}</p>
+            </ol>  
+    </div>
+</div>
+
+
