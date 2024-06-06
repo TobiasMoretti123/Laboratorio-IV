@@ -1,0 +1,17 @@
+.detalles{
+    width: 60%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 170%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: rgba(150, 87, 87, 0.2);
+    z-index: 1000;
+}
+
+p{
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}

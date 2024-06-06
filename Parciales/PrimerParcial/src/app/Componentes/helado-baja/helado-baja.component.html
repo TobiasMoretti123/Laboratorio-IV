@@ -1,0 +1,14 @@
+<div class="contenedor">
+    <div class="repartidor" *ngIf="helado">
+        <div class="info">
+            <ol class="data-list">
+                <h2>Seguro que quiere eliminar este helado?</h2>
+                <p>Sabor: {{helado.sabor}}</p><br>
+                <p>Tipo: {{helado.tipo}}</p><br>
+                <p>Precio: {{helado.precio}}</p><br>
+                <p>peso: {{helado.peso}}</p><br>
+                <button mat-raised-button (click)="BorrarHelado()">Si</button><br> 
+            </ol>  
+        </div>
+    </div>
+</div>

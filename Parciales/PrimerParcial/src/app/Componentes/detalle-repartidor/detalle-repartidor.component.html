@@ -1,0 +1,18 @@
+<div class="contenedor">
+    <div class="repartidor" *ngIf="repartidor">
+        <div class="info">
+            <ol class="data-list">
+                <p>Dni: {{repartidor.dni}}</p><br>
+                <p>Nombre: {{repartidor.nombre}}</p><br>
+                <p>Edad: {{repartidor.edad}}</p><br>
+                <p>Capacidad de Transporte: {{repartidor.capacidadTransporte}}</p><br>
+                <p (click)="MostrarDetalles(repartidor.paisOrigen)">Pais Origen: {{repartidor.paisOrigen}}</p><br>
+                <p>Tiene Unidad Propia: {{ repartidor.unidadPropia ? 'Sí' : 'No' }}</p><br>
+            </ol>  
+        </div>
+    </div>
+</div>
+
+<div class="detalles" *ngIf="mostrarDetalles">
+    <app-detalle-paises [pais]="selectedPais"></app-detalle-paises>
+</div>

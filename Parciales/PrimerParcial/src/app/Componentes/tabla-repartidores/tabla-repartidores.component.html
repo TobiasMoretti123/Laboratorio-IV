@@ -1,0 +1,16 @@
+<div class="button-grid">
+  <button mat-raised-button (click)="AbrirRuta('/home')">Volver</button>
+  <button mat-raised-button color="warn" (click)="CerrarSession()">Cerrar Sesión</button>
+  <i class="material-icons" (mouseover)="mostrarTexto()" (mouseleave)="ocultarTexto()">account_circle</i>
+  <div *ngIf="mostrarTooltip" class="tooltip">{{auth.currentUser?.email}}</div>
+</div>
+<div class="contenedor">
+  <h2>Listado Repartidores</h2><br>
+  <div *ngFor="let repartidor of repartidores; let i = index" (click)="MostrarDetalles(repartidor)">
+    <p>Nombre: {{repartidor.nombre}}<br><br>DNI: {{repartidor.dni}}</p><br>
+  </div>
+</div>
+
+<div class="detalles" *ngIf="mostrarDetalles">
+    <app-detalle-repartidor [repartidor]="selectedRepartidor"></app-detalle-repartidor>
+</div>

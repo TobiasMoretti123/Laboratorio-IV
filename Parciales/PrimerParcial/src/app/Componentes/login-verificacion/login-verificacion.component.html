@@ -1,0 +1,17 @@
+<div class="contenedor">
+    <h1 class="texto">Loguearse</h1>
+    <div class="inputs">
+    <mat-form-field class="input">
+      <input matInput [(ngModel)]="usuarioMail" placeholder="Correo electrónico">
+    </mat-form-field>
+    <mat-form-field class="input">
+      <input matInput [(ngModel)]="usuarioClave" type="password" placeholder="Contraseña">
+    </mat-form-field>
+    </div>
+    <div class="botones">
+      <button mat-raised-button color="primary" class="boton" (click)="Login()">Login</button>
+      <button mat-raised-button color="primary" class="boton" (click)="IngresoRapido(false)">Ingreso Empleado</button>
+      <button mat-raised-button color="primary" class="boton" (click)="IngresoRapido(true)">Ingreso Admin</button>   
+  </div>
+</div>
+  

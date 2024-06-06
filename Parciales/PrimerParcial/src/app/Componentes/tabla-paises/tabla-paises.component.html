@@ -1,0 +1,19 @@
+<div>
+    <h2>Paises Europeos</h2>
+    <ul>
+      <li *ngFor="let pais of paisesEuropeos">
+        <img [src]="pais.flags.svg" alt="Flag" (click)="SeleccionarPais($event,pais)">
+        {{ pais.name.common }}
+      </li>
+    </ul>
+  </div>
+  
+  <div>
+    <h2>Paises Africanos</h2>
+    <ul>
+      <li *ngFor="let pais of paisesAfricanos">
+        <img [src]="pais.flags.svg" alt="Flag" (click)="SeleccionarPais($event,pais)">
+        {{ pais.name.common }}
+      </li>
+    </ul>
+  </div>

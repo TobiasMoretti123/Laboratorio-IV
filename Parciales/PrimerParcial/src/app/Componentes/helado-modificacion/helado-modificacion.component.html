@@ -1,0 +1,43 @@
+<div class="contenedor">
+  <form [formGroup]="form" (ngSubmit)="ModificarHelado()">
+    <h2>Ingresar Un Helado</h2>
+      <div class="dato">
+        <mat-form-field appearance="fill">
+            <mat-label class="form-label" for="tipo">Tipo</mat-label>
+        <input matInput type="text" class="form-control" id="tipo" formControlName="tipo">
+        <small class="text-danger">
+          {{tipo?.getError('noCoincide')}}
+        </small>
+        </mat-form-field>
+      </div>
+  
+      <div class="dato">
+        <mat-form-field appearance="fill">
+            <mat-label class="form-label" for="precio">Precio</mat-label>
+        <input matInput type="number" class="form-control" id="precio" formControlName="precio">
+        <ng-container *ngIf="precio?.hasError('min')">
+          <small class="text-danger">El precio no puede ser negativo</small>
+        </ng-container>
+        </mat-form-field>
+        
+      </div>
+  
+      <div class="dato">
+        <mat-form-field appearance="fill">
+            <mat-label class="form-label" for="peso">Peso</mat-label>
+            <input matInput type="number" class="form-control" id="peso" formControlName="peso">
+            <ng-container *ngIf="peso?.hasError('min')">
+                <small class="text-danger">El peso debe ser mínimo 250</small>
+            </ng-container>
+            <ng-container *ngIf="peso?.hasError('max')">
+                <small class="text-danger">El peso debe ser máximo 1000</small>
+            </ng-container>
+        </mat-form-field>
+      </div>
+
+    <div class="dato">
+      <button mat-raised-button type="submit" class="form-button" [disabled]="!form.valid">Enviar</button> 
+    </div>
+  </form>
+    
+    

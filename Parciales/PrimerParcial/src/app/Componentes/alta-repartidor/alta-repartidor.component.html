@@ -1,0 +1,71 @@
+<div class="button-grid">
+    <button mat-raised-button (click)="AbrirRuta('/home')">Volver</button>
+    <button mat-raised-button color="warn" (click)="CerrarSession()">Cerrar Sesión</button>
+    <i class="material-icons" (mouseover)="mostrarTexto()" (mouseleave)="ocultarTexto()">account_circle</i>
+    <div *ngIf="mostrarTooltip" class="tooltip">{{auth.currentUser?.email}}</div>
+</div>
+<div class="contenedor">
+  <form [formGroup]="form" (ngSubmit)="AltaRepartidor()">
+    <h2>Ingresar Un Repartidor</h2>
+    <div class="dato">
+        <mat-form-field appearance="fill">
+            <mat-label class="form-label" for="dni">DNI</mat-label>
+        <input matInput type="text" class="form-control" id="dni" formControlName="dni">
+        <small class="text-danger">
+          {{dni?.getError('noEsDni')}}
+        </small>
+        </mat-form-field>
+      </div>
+  
+      <div class="dato">
+        <mat-form-field appearance="fill">
+            <mat-label class="form-label" for="nombre">Nombre</mat-label>
+        <input matInput type="text" class="form-control" id="nombre" formControlName="nombre">
+        <ng-container *ngIf="nombre?.hasError('pattern')">
+          <small class="text-danger">Sólo debe contener letras</small>
+        </ng-container>
+        </mat-form-field>
+        
+      </div>
+  
+      <div class="dato">
+        <mat-form-field appearance="fill">
+            <mat-label class="form-label" for="edad">Edad</mat-label>
+        <input matInput type="number" class="form-control" id="edad" formControlName="edad">
+        <ng-container *ngIf="edad?.hasError('min')">
+          <small class="text-danger">Debe ser Mayor de 18 para ser Repartidor</small>
+        </ng-container>
+        </mat-form-field>
+        
+      </div>
+  
+      <div class="dato">
+        <mat-form-field appearance="fill">
+            <mat-label class="form-label" for="capacidadTransporte">Capacidad Transporte</mat-label>
+            <input matInput type="number" class="form-control" id="capacidadTransporte" formControlName="capacidadTransporte">
+            <ng-container *ngIf="capacidadTransporte?.hasError('min')">
+                <small class="text-danger">La capacidad de transporte no puede ser negativa</small>
+            </ng-container>
+        </mat-form-field>
+      </div>
+
+    <div class="dato">
+      <mat-label class="form-label" for="paisOrigen">Selecione Pais de La Tabla</mat-label>
+        <p>{{paisSeleccionado?.name.common}}</p>
+    </div>
+
+    <div class="dato">
+        <mat-radio-group formControlName="unidadPropia">
+            <mat-radio-button value="true">Unidad Propia</mat-radio-button>
+            <mat-radio-button value="false">No Unidad Propia</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    <div class="dato">
+      <button mat-raised-button type="submit" class="form-button" [disabled]="!form.valid">Enviar</button>
+    </div>
+  </form>
+</div>
+<div class="dato-pais">
+  <app-tabla-paises (countrySelected)="OnSeleccionarPais($event)"></app-tabla-paises>
+</div>

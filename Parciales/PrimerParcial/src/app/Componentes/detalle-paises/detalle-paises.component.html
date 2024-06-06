@@ -1,0 +1,11 @@
+<div class="contenedor">
+    <ul>
+        <li *ngFor="let p of pais">
+          <p>Nombre: {{ p.name.common }}</p>
+          <p>Region: {{ p.region}}</p>
+          <P>Capital: {{ p.capital}}</P>
+          <p>Bandera: </p>
+          <img [src]="p.flags.svg" alt="Flag">
+        </li>
+      </ul>
+</div>

@@ -1,0 +1,12 @@
+.contenedor {
+    width: 30%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: rgba(68, 63, 136, 0.2);
+    z-index: 1000;
+  }

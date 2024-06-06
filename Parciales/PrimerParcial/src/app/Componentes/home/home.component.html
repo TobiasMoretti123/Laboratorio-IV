@@ -1,0 +1,31 @@
+<div class="container">
+    <ng-container *ngIf="auth.currentUser?.email; else loggedOut">
+      <div class="content">
+        <div class="button-grid">
+          <button mat-raised-button (click)="AbrirRuta('helado/ABM')">ABM Helados</button>
+          <button mat-raised-button (click)="AbrirRuta('repartidor/listado')">Ver Repartidores</button>
+          <button mat-raised-button (click)="AbrirRuta('repartidor/alta')">Ingresar Repartidor</button>
+          <button mat-raised-button color="warn" (click)="CerrarSession()">Cerrar Sesión</button>
+          <i class="material-icons" (mouseover)="mostrarTexto()" (mouseleave)="ocultarTexto()">account_circle</i>
+          <div *ngIf="mostrarTooltip" class="tooltip">{{auth.currentUser?.email}}</div>
+        </div>
+        <div class="datos">
+          <img [src]="userData.avatar_url" alt="Avatar">
+           <div>
+            <mat-label class="usuario">Nombre de usuario: {{ userData.login }}</mat-label><br><br>
+            <mat-label class="nombre">Nombre: {{ userData.name }}</mat-label>
+           </div> 
+        </div>
+      </div>
+    </ng-container>
+  <ng-template #loggedOut>
+    <div class="content">
+      <div class="button-grid">
+        <i class="material-icons" (mouseover)="mostrarTexto()" (mouseleave)="ocultarTexto()">account_circle</i>
+          <div *ngIf="mostrarTooltip" class="tooltip">Debe Loguearse</div>
+      </div>
+      <app-login-verificacion></app-login-verificacion>
+    </div>
+  </ng-template>
+</div>
+  
