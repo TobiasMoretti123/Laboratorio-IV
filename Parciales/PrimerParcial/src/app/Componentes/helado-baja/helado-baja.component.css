@@ -1,12 +1,19 @@
 .contenedor {
-    width: 30%;
+    width: 20%;
     margin: 0 auto;
     position: absolute;
     top: 50%;
-    left: 100%;
+    left: 90%;
     transform: translate(-50%, -50%);
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 10px;
     background-color: rgba(68, 63, 136, 0.2);
     z-index: 1000;
   }
+p{
+  font-size: 20px;
+}
+
+h2{
+  font-size: 30px;
+}
